@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no">
+  <title>定制说明书模板</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/icon.css">
+  <script src="js/zepto.min.js"></script>
+  <script>
+    var uiColor = {
+      //左右目录、菜单按钮颜色
+      mainbtn: '#59c3fa',
+      //进度条颜色
+      progress: '#59c3fa',
+      //标题背景颜色
+      title: '#fe4444',
+      //当前页码背景色
+      curpage: '#f0f',
+      //总页码背景色
+      maxpage: '0f0'
+    }
+
+    //每页的标题初始化在这里
+    var pageTitle = {
+      stage1:'第一页的标题',
+      stage2:'第二页的标题',
+      stage3:'第三页的标题'
+    };
+  </script>
+<body>
+  <!-- 封皮 -->
+  <div class="active" id="homepage">
+  </div>
+
+  <div id="slide_box">
+    <div class="slide_stage active" id="stage1">
+    </div>
+
+    <div class="slide_stage" id="stage2">
+    </div>
+
+    <div class="slide_stage" id="stage3">
+    </div>
+
+    <div class="slide_stage" id="stage4">
+    </div>
+
+    <div class="slide_stage" id="stage5">
+    </div>
+
+    <div class="slide_stage" id="stage6">
+    </div>
+
+  </div>
+
+
+  <!-- 目录按钮 -->
+  <div id="content_btn">
+    <span></span>
+  </div>
+
+  <!-- 菜单按钮 -->
+  <div id="menu_btn">
+    <span></span>
+  </div>
+
+  <!-- 右侧菜单 -->
+  <div id="menubox">
+    <div id="menu_logo">
+      <a href="javascript:void(0);">
+        <img src="images/menu_logo.png">
+        <img class="light" src="images/menu_logo_light.png">
+      </a>
+    </div>
+
+    <h3 id="titlelink">
+      <a href="javascript:void(0);">“镜”来看看</a>
+    </h3>
+
+    <ul id="link_list">
+      <li>
+        <a id="shangcheng_link" class="clearfix" href="javascript:void(0);">
+          <i class="icon-cart"></i>
+          <span>商城</span>
+        </a>
+      </li>
+      <li>
+        <a id="share_link" class="clearfix" href="javascript:void(0);">
+          <i class="icon-share2"></i>
+          <span>分享</span>
+        </a>
+      </li>
+      <li>
+        <a id="shoucang_link" class="clearfix" href="javascript:void(0);">
+          <i class="icon-collect"></i>
+          <span>收藏</span>
+        </a>
+      </li>
+      <li>
+        <a id="quanzi_link" class="clearfix" href="javascript:void(0);">
+          <i class="icon-discuss"></i>
+          <span>圈子</span>
+        </a>
+      </li>
+      <li>
+        <a id="geren_link" class="clearfix" href="javascript:void(0);">
+          <i class="icon-user"></i>
+          <span>个人</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="close">
+      <img src="images/menu_bottom_line.png">
+      <a href="javascript:void(0);">
+        <i class="icon-zhankai"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- 左侧目录 -->
+  <div id="contentsbox">
+    <img class="bar" src="images/contents_bar.png">
+    <img class="title" src="images/contents_title.png">
+    <ul>
+      <li>
+        <a href="javascript:void(0);" data-index="1">
+          <p>
+            <span>目录文字标题</span>
+            <em>----------</em>
+          </p>
+          <strong><i class="icon-r-arrow"></i></strong>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:void(0);" data-index="3">
+          <p>
+            <span>目录文字标题</span>
+            <em>----------</em>
+          </p>
+          <strong><i class="icon-r-arrow"></i></strong>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:void(0);" data-index="5">
+          <p>
+            <span>目录文字标题字标题字标题字标题字标题</span>
+            <em>----------</em>
+          </p>
+          <strong><i class="icon-r-arrow"></i></strong>
+        </a>
+      </li>
+    </ul>
+    <div id="contents_bottom">
+      <a class="close" href="javascript:void(0);"><i class="icon-l-arrow"></i></a>
+      <a id="kefu_link" class="tel" href="javascript:void(0);">产品客服<i class="icon-phone"></i>...</a>
+    </div>
+  </div>
+
+  <!-- 菜单复位层 -->
+  <div id="closebg"></div>
+
+
+  <!-- 每页头部标题 -->
+  <div id="titlebox">产品包装清单</div>
+
+  <!-- 页码 -->
+  <div id="pagebox">
+    <span id="curpage">1</span>
+    <span id="maxpage">1</span>
+  </div>
+
+  <!-- 进度条 -->
+  <div id="progress_bar">
+    <div class="bar"></div>
+  </div>
+
+  <!-- 收藏提示层 -->
+  <div id="shoucang_tip">
+    <div class="content">
+      <div class="top">
+        <a href="javascript:void(0);" class="close"><i class="icon-close"></i></a>
+        <p class="info"></p>
+        <p>您可前往收藏夹查看</p>
+      </div>
+      <div class="bottom">
+        <a href="${ctx}/api/hy/scj" class="to_scj">收藏夹<i class="icon-r-arrow"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/base.js"></script>
+</body>
+</html>
