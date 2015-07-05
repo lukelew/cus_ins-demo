@@ -44,7 +44,7 @@
           break;
         case 'buy':
           console.log('buy is '+ urlKey[1]);
-          menubox.find('#shangcheng_link').attr('href',urlKey[1]);
+          //menubox.find('#shangcheng_link').attr('href',urlKey[1]);
           break;
         case 'j':
           console.log('j is '+ urlKey[1]);
@@ -121,29 +121,29 @@
   //左右抽屉式菜单交互效果
   var closebg = $('#closebg');
   function menuclose(){
-    $('#menu_btn').attr('class','');
-    menubox.attr('class','');
-    $('#content_btn').attr('class','');
-    $('#contentsbox').attr('class','');
-    closebg.attr('class','');
+    $('#menu_btn').removeClass();
+    menubox.removeClass();
+    $('#content_btn').removeClass();
+    $('#contentsbox').removeClass();
+    closebg.removeClass();
   }
 
   //目录按钮
   $('#content_btn').on('tap',function(event){
     event.stopPropagation();
     menuclose();
-    $(this).attr('class','active');
-    $('#contentsbox').attr('class','active');
-    closebg.attr('class','active');
+    $(this).addClass('active');
+    $('#contentsbox').addClass('active');
+    closebg.addClass('active');
   })
 
   //菜单按钮
   $('#menu_btn').on('tap',function(event){
     event.stopPropagation();
     menuclose();
-    $(this).attr('class','active');
-    menubox.attr('class','active');
-    closebg.attr('class','active');
+    $(this).addClass('active');
+    menubox.addClass('active');
+    closebg.addClass('active');
   });
 
   //复位菜单
@@ -157,6 +157,7 @@
     menuclose();
   })
 
+  //目录跳转
   content.on('tap','a',function(){
     var contIndex = $(this).data('index');
     slideBox.css('-webkit-transform','translate3d('+ -(contIndex-1) * winW +'px,0,0)');
@@ -164,6 +165,7 @@
     slideBox.removeClass('autoslide');
     $('.slide_stage').removeClass('active');
     $('#stage'+contIndex).addClass('active');
+    $('#homepage').removeClass('active');
     pageNum();
   });
 
@@ -192,21 +194,32 @@
   };
   pageNum();
 
+  //分享功能
+  menubox.on('tap','#share_link',function(){
+    $('#share_tip').addClass('active');
+    menuclose();
+  });
+  $('#share_tip').on('tap',function(){
+    $('#share_tip').attr('class','');
+  })
 
   //收藏功能
-  $('#homeBox').on('click','#shouCang',function() {
-    $.ajax({
-      type : 'get',
-      url : ctx + '/api/hy/scj/add?source_id='
-          + id + '&type=1',
-      dataType : 'json',
-      success : function(data) {
+  menubox.on('tap','#shoucang_link',function() {
+    // $.ajax({
+    //   type : 'get',
+    //   url : ctx + '/api/hy/scj/add?source_id='
+    //       + id + '&type=1',
+    //   dataType : 'json',
+    //   success : function(data) {
 
-      }
-    })
+    //   }
+    // })
+    $('#shoucang_tip').addClass('active');
+    menuclose();
   });
-
-
+  $('#shoucang_tip').on('tap','.close',function(){
+    $('#shoucang_tip').removeClass('active');
+  });
 
 
 
