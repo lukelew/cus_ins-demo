@@ -391,10 +391,10 @@ html{
   top: 0;
   left: 50%;
   z-index: 10;
-  width: 2rem;
+  width: 2.6rem;
   height: .3rem;
   line-height: .3rem;
-  margin: 0 0 0 -1rem;
+  margin: 0 0 0 -1.3rem;
   text-align: center;
   background: #fea0a0;
   color: #fff;

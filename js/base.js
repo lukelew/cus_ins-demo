@@ -41,10 +41,15 @@
           break;
         case 'id':
           console.log('id is '+ urlKey[1]);
+          id = urlKey[1];
           break;
         case 'buy':
           console.log('buy is '+ urlKey[1]);
           //menubox.find('#shangcheng_link').attr('href',urlKey[1]);
+          break;
+        case 'd':
+          console.log('d is ' + urlKey[1])
+          ctx = urlKey[1];
           break;
         case 'j':
           console.log('j is '+ urlKey[1]);
@@ -59,6 +64,8 @@
   //封皮首页滑动
   $('#homepage').on('swipeLeft',function(){
     $(this).removeClass('active');
+    $('#stage1').addClass('active');
+    pageNum();
   })
 
   //控制翻页滑动
@@ -95,6 +102,7 @@
     var y = touch.pageY - startY;
 
     slideBox.addClass('autoslide');
+    pageNum();
     //向左滑动,下一页
     if(myIndex!=lastStage && x<=-50){
       slideBox.css('-webkit-transform','translate3d('+ -myIndex * winW +'px,0,0)');
@@ -113,8 +121,9 @@
     }
     if(myIndex==1 && x>=50){
       $('#homepage').addClass('active');
+      $('.slide_stage').removeClass('active');
     }
-    pageNum();
+
   });
 
 
@@ -184,15 +193,14 @@
 
   function pageNum(){
     var curpage =  $('.slide_stage.active').attr('id');
-    $('#curpage').html(curpage.substr(5,1));
+    $('#curpage').html(curpage.substr(5));
 
     $('#titlebox').html(pageTitle[curpage]);
 
     var proLength = $('#progress_bar').width()-$('#progress_bar').find('.bar').width();
     var stepLength = proLength/(lastStage-1);
-    $('#progress_bar').find('.bar').css('left',stepLength*(curpage.substr(5,1)-1));
+    $('#progress_bar').find('.bar').css('left',stepLength*(curpage.substr(5)-1));
   };
-  pageNum();
 
   //分享功能
   menubox.on('tap','#share_link',function(){
@@ -205,16 +213,16 @@
 
   //收藏功能
   menubox.on('tap','#shoucang_link',function() {
-    // $.ajax({
-    //   type : 'get',
-    //   url : ctx + '/api/hy/scj/add?source_id='
-    //       + id + '&type=1',
-    //   dataType : 'json',
-    //   success : function(data) {
+    $.ajax({
+      type : 'get',
+      url : ctx + '/api/hy/scj/add?source_id='
+          + id + '&type=1',
+      dataType : 'json',
+      success : function(data) {
+        $('#shoucang_tip').addClass('active');
+      }
+    })
 
-    //   }
-    // })
-    $('#shoucang_tip').addClass('active');
     menuclose();
   });
   $('#shoucang_tip').on('tap','.close',function(){
